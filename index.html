@@ -39,10 +39,13 @@ button:hover{background:#ddd}
 #fileLabel{display:inline-block;background:#222;padding:10px;border-radius:6px;cursor:pointer;text-align:center;}
 #file{display:none;}
 .preview img{max-width:100%;margin-top:10px;border-radius:6px;border:1px solid #222}
-.success-box{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);flex-direction:column;align-items:center;justify-content:center;padding:20px;border:2px solid var(--success);border-radius:8px;background:#0d0d0d;color:var(--success);z-index:1000;max-width:400px;text-align:center;}
+.success-box{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);flex-direction:column;align-items:center;justify-content:center;padding:20px;border:2px solid var(--success);border-radius:12px;background:#0d0d0d;color:var(--success);z-index:1000;max-width:400px;text-align:center;box-shadow:0 0 20px var(--success);}
 .success-box h3{margin:0 0 10px 0;color:var(--success);}
 .success-box p{color:var(--muted);}
-.flag-btn{position:absolute;top:10px;right:10px;padding:6px 10px;border-radius:50%;border:none;cursor:pointer;background:#222;color:#fff;font-weight:600;transition:.2s}
+#langMenu{display:none;position:absolute;top:40px;right:10px;background:#222;border-radius:8px;overflow:hidden;flex-direction:column;min-width:120px;z-index:1001;}
+#langMenu button{padding:10px;border:none;background:#222;color:#fff;text-align:left;cursor:pointer;width:100%;transition:.2s}
+#langMenu button:hover{background:#333}
+.flag-btn{position:absolute;top:10px;right:10px;padding:10px;border-radius:50%;border:none;cursor:pointer;background:#222;color:#fff;font-weight:600;transition:.2s;font-size:18px}
 .flag-btn:hover{background:#333}
 @media (max-width:900px){
   .sidebar{position:static;width:100%;height:auto;padding:18px;display:flex;flex-direction:row;gap:12px;align-items:center}
@@ -74,6 +77,10 @@ button:hover{background:#ddd}
 
   <main class="content">
     <button class="flag-btn" id="langBtn">🌐</button>
+    <div id="langMenu">
+      <button data-lang="pt">Português</button>
+      <button data-lang="en">English</button>
+    </div>
     <header id="resumo">
       <h2 data-translate="Kdefy — Políticas para clientes">Kdefy — Políticas para clientes</h2>
     </header>
@@ -144,7 +151,8 @@ ctx.fillStyle='#fff';ctx.fillRect(18,18,c.width-36,c.height-36);
 ctx.fillStyle='#000';ctx.fillRect(28,26,14,c.height-52);
 ctx.beginPath();ctx.moveTo(c.width/2+6,28);ctx.lineTo(c.width-28,c.height/2);ctx.lineTo(c.width/2+6,c.height-28);ctx.closePath();ctx.fill();
 const f=document.createElement('canvas');f.width=64;f.height=64;const fx=f.getContext('2d');
-fx.fillStyle='#000';fx.fillRect(0,0,64,64);fx.drawImage(c,0,0,64,64);
+fx.fillStyle='#000';fx.fillRect(0,0,64,64);
+fx.drawImage(c,0,0,64,64);
 const link=document.createElement('link');link.rel='icon';link.href=f.toDataURL('image/png');document.head.appendChild(link);
 
 const d=new Date();const formatted=d.toLocaleDateString('pt-BR',{year:'numeric',month:'long',day:'2-digit'});
@@ -172,35 +180,34 @@ document.getElementById('contactForm').addEventListener('submit',async e=>{
       sctx.clearRect(0,0,80,80);
       sctx.fillStyle='#000';sctx.fillRect(0,0,80,80);
       sctx.fillStyle='#00ff6a';sctx.font='bold 28px Arial';
-      sctx.fillText('✔',20,50);
+      sctx.fillText('K',20,50);
     }else alert('Erro ao enviar. Tente novamente.');
   }catch(err){alert('Erro ao conectar com o servidor.');console.error(err);}
 });
 
-// Tradução
+const langBtn=document.getElementById('langBtn'),langMenu=document.getElementById('langMenu');
+langBtn.addEventListener('click',()=>{langMenu.style.display=langMenu.style.display==='flex'?'none':'flex'});
+document.querySelectorAll('#langMenu button').forEach(b=>{b.addEventListener('click',()=>{currentLang=b.dataset.lang;updateLang();langMenu.style.display='none'})});
+
 const translations={
-  en:{
-    "Resumo":"Summary","Política de Reembolso":"Refund Policy","Privacidade":"Privacy","Termos":"Terms","Contato":"Contact",
-    "Kdefy — Políticas para clientes":"Kdefy — Customer Policies","Política de Reembolso":"Refund Policy","Regra principal:":"Main Rule:",
-    "Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.":"Refunds only within 30 days and only in case of verified technical issues.",
-    "Pedidos fora do prazo são recusados.":"Requests beyond the deadline are denied.","Vendas com desconto podem não ter reembolso.":"Discounted sales may not be refunded.",
-    "Alterações ou mau uso anulam o direito.":"Changes or misuse void the right.","Política de Privacidade":"Privacy Policy",
-    "Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.":"We collect only essential data (name, email, phone, payment proof). No third-party sharing except legal requirements.",
-    "Termos de Uso":"Terms of Use","Uso permitido apenas em conformidade com leis e regras das plataformas.":"Use only in compliance with laws and platform rules.",
-    "Proibida revenda sem autorização.":"Resale without permission is prohibited.","Suporte e atualizações podem ter custo adicional.":"Support and updates may have additional cost.",
-    "Solicitar Reembolso / Contato":"Request Refund / Contact","Reembolso":"Refund","Outro":"Other",
-    "Nome":"Name","E-mail":"Email","Número":"Phone","Mensagem":"Message","Anexar imagem (opcional)":"Attach image (optional)","Enviar":"Send",
-    "Mensagem enviada com sucesso!":"Message sent successfully!","Seu pedido foi recebido e será analisado.":"Your request has been received and will be analyzed. For more info visit support.kdefy.com/terms-privacy"
-  }
+en:{
+"Resumo":"Summary","Política de Reembolso":"Refund Policy","Privacidade":"Privacy","Termos":"Terms","Contato":"Contact",
+"Kdefy — Políticas para clientes":"Kdefy — Customer Policies",
+"Regra principal:":"Main Rule:","Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.":"Refunds only within 30 days and only in case of verified technical issues.",
+"Pedidos fora do prazo são recusados.":"Requests beyond deadline are denied.","Vendas com desconto podem não ter reembolso.":"Discounted sales may not be refunded.",
+"Alterações ou mau uso anulam o direito.":"Changes or misuse void the right.","Política de Privacidade":"Privacy Policy",
+"Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.":"We collect only essential data (name, email, phone, payment proof). No third-party sharing except legal requirements.",
+"Termos de Uso":"Terms of Use","Uso permitido apenas em conformidade com leis e regras das plataformas.":"Use only in compliance with laws and platform rules.",
+"Proibida revenda sem autorização.":"Resale without permission is prohibited.","Suporte e atualizações podem ter custo adicional.":"Support and updates may have additional cost.",
+"Solicitar Reembolso / Contato":"Request Refund / Contact","Reembolso":"Refund","Outro":"Other",
+"Nome":"Name","E-mail":"Email","Número":"Phone","Mensagem":"Message","Anexar imagem (opcional)":"Attach image (optional)","Enviar":"Send",
+"Mensagem enviada com sucesso!":"Message sent successfully!","Seu pedido foi recebido e será analisado.":"Your request has been received and will be analyzed. For more info visit support.kdefy.com/terms-privacy"
 };
 let currentLang='pt';
-document.getElementById('langBtn').addEventListener('click',()=>{
-  currentLang=currentLang==='pt'?'en':'pt';
-  document.querySelectorAll('[data-translate]').forEach(el=>{
-    if(currentLang==='en'&&translations.en[el.getAttribute('data-translate')]) el.textContent=translations.en[el.getAttribute('data-translate')];
-    if(currentLang==='pt'&&el.getAttribute('data-translate')) el.textContent=el.getAttribute('data-translate');
-  });
-});
+function updateLang(){document.querySelectorAll('[data-translate]').forEach(el=>{
+if(currentLang==='en'&&translations.en[el.getAttribute('data-translate')]) el.textContent=translations.en[el.getAttribute('data-translate')];
+if(currentLang==='pt'&&el.getAttribute('data-translate')) el.textContent=el.getAttribute('data-translate');
+})}
 </script>
 </body>
 </html>
