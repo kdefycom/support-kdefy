@@ -6,7 +6,7 @@
 <title>Kdefy — Termos, Privacidade & Reembolso</title>
 <style>
 :root{
-  --bg:#0b0b0b;--panel:#0f0f0f;--muted:#bdbdbd;--text:#f6f6f6;--accent:#00ffea;--success:#00ff6a;
+  --bg:#0b0b0b;--panel:#0f0f0f;--muted:#bdbdbd;--text:#ffffff;--accent:#ffffff;
 }
 html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text)}
 a{color:inherit;text-decoration:none}
@@ -37,11 +37,8 @@ form{display:flex;flex-direction:column;gap:10px;background:#111;padding:18px;bo
 label{font-weight:600;color:#fff}
 input,textarea{background:#0d0d0d;border:1px solid #222;color:#fff;padding:10px;border-radius:6px;width:100%;box-sizing:border-box;font-family:Inter,Arial,sans-serif;}
 button{background:var(--accent);color:#000;font-weight:700;border:none;border-radius:6px;padding:12px;cursor:pointer;transition:.2s}
-button:hover{background:#00ffaa}
+button:hover{background:#ddd}
 .preview img{max-width:100%;margin-top:10px;border-radius:6px;border:1px solid #222}
-.success-box{display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;border:2px solid var(--success);border-radius:8px;background:#0d0d0d;margin-top:20px;color:var(--success);}
-.success-box h3{margin:0 0 10px 0;color:var(--success);}
-.success-box p{color:var(--muted);}
 @media (max-width:900px){
   .sidebar{position:static;width:100%;height:auto;padding:18px;display:flex;flex-direction:row;gap:12px;align-items:center}
   .content{margin-left:0;padding:20px}
@@ -49,6 +46,9 @@ button:hover{background:#00ffaa}
   nav{flex-direction:row;gap:8px;overflow:auto}
   nav a{white-space:nowrap}
 }
+.flag-buttons{margin:10px 0;display:flex;gap:8px}
+.flag-buttons button{padding:6px 10px;border-radius:6px;border:none;cursor:pointer;background:#222;color:#fff;font-weight:600;transition:.2s}
+.flag-buttons button:hover{background:#333}
 </style>
 </head>
 <body>
@@ -58,75 +58,71 @@ button:hover{background:#00ffaa}
       <canvas class="logo-canvas" id="logoCanvas" width="128" height="128"></canvas>
       <div>
         <h1>Kdefy</h1>
-        <div class="meta">Soluções de bots para WhatsApp — venda e suporte</div>
+        <div class="meta" id="siteDesc">Soluções de bots para WhatsApp — venda e suporte</div>
       </div>
     </div>
     <nav>
-      <a href="#resumo">Resumo</a>
-      <a href="#reembolso">Política de Reembolso</a>
-      <a href="#privacidade">Privacidade</a>
-      <a href="#termos">Termos</a>
-      <a href="#contato">Contato</a>
+      <a href="#resumo" data-translate="Resumo">Resumo</a>
+      <a href="#reembolso" data-translate="Política de Reembolso">Política de Reembolso</a>
+      <a href="#privacidade" data-translate="Privacidade">Privacidade</a>
+      <a href="#termos" data-translate="Termos">Termos</a>
+      <a href="#contato" data-translate="Contato">Contato</a>
     </nav>
-    <div class="small">
-      suporte@kdefy.com<br>
-      Última atualização: <span id="lastUpdateSmall"></span>
+    <div class="flag-buttons">
+      <button id="ptBtn">🇧🇷 PT</button>
+      <button id="enBtn">🇺🇸 EN</button>
     </div>
+    <div class="small" id="supportInfo">support.kdefy.com<br>Última atualização: <span id="lastUpdateSmall"></span></div>
   </aside>
 
   <main class="content">
     <header id="resumo">
-      <h2>Kdefy — Políticas para clientes</h2>
-      <p>Regras de reembolso, privacidade e termos de uso para bots de WhatsApp.</p>
+      <h2 data-translate="Kdefy — Políticas para clientes">Kdefy — Políticas para clientes</h2>
+      <p data-translate="Regras de reembolso, privacidade e termos de uso para bots de WhatsApp.">Regras de reembolso, privacidade e termos de uso para bots de WhatsApp.</p>
     </header>
 
     <section id="reembolso">
-      <h3>Política de Reembolso</h3>
+      <h3 data-translate="Política de Reembolso">Política de Reembolso</h3>
       <div class="highlight">
-        <div class="rule">Regra principal:</div>
-        <p>Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.</p>
+        <div class="rule" data-translate="Regra principal:">Regra principal:</div>
+        <p data-translate="Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.">Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.</p>
       </div>
       <ul>
-        <li>Pedidos fora do prazo são recusados.</li>
-        <li>Vendas com desconto podem não ter reembolso.</li>
-        <li>Alterações ou mau uso anulam o direito.</li>
+        <li data-translate="Pedidos fora do prazo são recusados.">Pedidos fora do prazo são recusados.</li>
+        <li data-translate="Vendas com desconto podem não ter reembolso.">Vendas com desconto podem não ter reembolso.</li>
+        <li data-translate="Alterações ou mau uso anulam o direito.">Alterações ou mau uso anulam o direito.</li>
       </ul>
     </section>
 
     <section id="privacidade">
-      <h3>Política de Privacidade</h3>
-      <p>Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.</p>
+      <h3 data-translate="Política de Privacidade">Política de Privacidade</h3>
+      <p data-translate="Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.">Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.</p>
     </section>
 
     <section id="termos">
-      <h3>Termos de Uso</h3>
+      <h3 data-translate="Termos de Uso">Termos de Uso</h3>
       <ul>
-        <li>Uso permitido apenas em conformidade com leis e regras das plataformas.</li>
-        <li>Proibida revenda sem autorização.</li>
-        <li>Suporte e atualizações podem ter custo adicional.</li>
+        <li data-translate="Uso permitido apenas em conformidade com leis e regras das plataformas.">Uso permitido apenas em conformidade com leis e regras das plataformas.</li>
+        <li data-translate="Proibida revenda sem autorização.">Proibida revenda sem autorização.</li>
+        <li data-translate="Suporte e atualizações podem ter custo adicional.">Suporte e atualizações podem ter custo adicional.</li>
       </ul>
     </section>
 
     <section id="contato">
-      <h3>Solicitar Reembolso / Contato</h3>
+      <h3 data-translate="Solicitar Reembolso / Contato">Solicitar Reembolso / Contato</h3>
       <form id="contactForm">
-        <label for="name">Nome</label>
+        <label for="name" data-translate="Nome">Nome</label>
         <input type="text" id="name" name="name" placeholder="Seu nome" required>
-        <label for="email">E-mail</label>
+        <label for="email" data-translate="E-mail">E-mail</label>
         <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
-        <label for="phone">Número</label>
+        <label for="phone" data-translate="Número">Número</label>
         <input type="text" id="phone" name="phone" placeholder="Seu número (opcional)">
-        <label for="message">Mensagem</label>
+        <label for="message" data-translate="Mensagem">Mensagem</label>
         <textarea id="message" name="message" rows="4" placeholder="Digite sua mensagem..." required></textarea>
-        <label for="file">Anexar imagem (opcional)</label>
+        <label for="file" data-translate="Anexar imagem (opcional)">Anexar imagem (opcional)</label>
         <input type="file" id="file" name="file" accept="image/*">
         <div class="preview" id="preview"></div>
-        <button type="submit">Enviar</button>
-        <div class="success-box" id="successBox">
-          <canvas id="successLogo" width="80" height="80"></canvas>
-          <h3>Mensagem enviada com sucesso!</h3>
-          <p>Seu pedido foi recebido e será analisado. Para mais informações acesse <a href="https://kdefy.com/terms-privacy" target="_blank">kdefy.com/terms-privacy</a></p>
-        </div>
+        <button type="submit" data-translate="Enviar">Enviar Email</button>
       </form>
     </section>
   </main>
@@ -153,24 +149,58 @@ document.getElementById('file').addEventListener('change',e=>{
   if(file){const img=document.createElement('img');img.src=URL.createObjectURL(file);prev.appendChild(img);}
 });
 
-document.getElementById('contactForm').addEventListener('submit', async e=>{
+document.getElementById('contactForm').addEventListener('submit',e=>{
   e.preventDefault();
-  const form=document.getElementById('contactForm');
-  const data=new FormData(form);
-  try{
-    const res=await fetch('https://SEU_BACKEND_URL/send',{method:'POST',body:data});
-    if(res.ok){
-      document.getElementById('successBox').style.display='flex';
-      form.reset();
-      document.getElementById('preview').innerHTML='';
-      const sl=document.getElementById('successLogo'),sctx=sl.getContext('2d');
-      sctx.fillStyle='#000';sctx.fillRect(0,0,80,80);
-      sctx.fillStyle='#00ff6a';
-      sctx.font='bold 28px Arial';
-      sctx.fillText('✔',20,50);
-    } else alert('Erro ao enviar o pedido. Tente novamente.');
-  }catch(err){alert('Erro ao conectar com o servidor.');console.error(err);}
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const message=document.getElementById('message').value.trim();
+  const subject=encodeURIComponent('Contato Kdefy — '+name);
+  const body=encodeURIComponent(`Nome: ${name}\nEmail: ${email}\nNúmero: ${phone}\nMensagem: ${message}`);
+  window.location.href=`mailto:kdefycom@gmail.com?subject=${subject}&body=${body}`;
 });
+
+// Tradutor simples
+const translations={
+  en:{
+    "Resumo":"Summary",
+    "Política de Reembolso":"Refund Policy",
+    "Privacidade":"Privacy",
+    "Termos":"Terms",
+    "Contato":"Contact",
+    "Kdefy — Políticas para clientes":"Kdefy — Customer Policies",
+    "Regras de reembolso, privacidade e termos de uso para bots de WhatsApp.":"Rules for refunds, privacy and terms for WhatsApp bots.",
+    "Política de Reembolso":"Refund Policy",
+    "Regra principal:":"Main Rule:",
+    "Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.":"Refunds only within 30 days and only in case of verified technical issues.",
+    "Pedidos fora do prazo são recusados.":"Requests beyond the deadline are denied.",
+    "Vendas com desconto podem não ter reembolso.":"Discounted sales may not be refunded.",
+    "Alterações ou mau uso anulam o direito.":"Changes or misuse void the right.",
+    "Política de Privacidade":"Privacy Policy",
+    "Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.":"We collect only essential data (name, email, number, payment proof). No sharing with third parties except legally required.",
+    "Termos de Uso":"Terms of Use",
+    "Uso permitido apenas em conformidade com leis e regras das plataformas.":"Use only in compliance with laws and platform rules.",
+    "Proibida revenda sem autorização.":"Resale without authorization prohibited.",
+    "Suporte e atualizações podem ter custo adicional.":"Support and updates may have additional cost.",
+    "Solicitar Reembolso / Contato":"Request Refund / Contact",
+    "Nome":"Name",
+    "E-mail":"Email",
+    "Número":"Phone",
+    "Mensagem":"Message",
+    "Anexar imagem (opcional)":"Attach image (optional)",
+    "Enviar":"Send"
+  }
+};
+
+document.getElementById('enBtn').addEventListener('click',()=>translatePage('en'));
+document.getElementById('ptBtn').addEventListener('click',()=>translatePage('pt'));
+
+function translatePage(lang){
+  document.querySelectorAll('[data-translate]').forEach(el=>{
+    if(lang==='en' && translations.en[el.getAttribute('data-translate')]) el.textContent=translations.en[el.getAttribute('data-translate')];
+    if(lang==='pt' && el.getAttribute('data-translate')) el.textContent=el.getAttribute('data-translate');
+  });
+}
 </script>
 </body>
 </html>
