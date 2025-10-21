@@ -61,16 +61,24 @@
       animation: fadeInDown 0.8s ease-out;
     }
 
-    header img {
+    #logo {
       width: 80px;
       height: 80px;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 16px;
       border: 2px solid var(--primary);
       box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
       transition: transform 0.3s ease;
+      font-family: 'Arial Black', sans-serif;
+      background: transparent;
     }
 
-    header img:hover {
+    #logo:hover {
       transform: scale(1.05) rotate(5deg);
     }
 
@@ -98,6 +106,116 @@
       padding: 0 20px 120px;
     }
 
+    /* Seção de Comentários */
+    .testimonials-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.6s ease-out both;
+      overflow: hidden;
+    }
+
+    .testimonials-section h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 32px;
+      color: #fff;
+    }
+
+    .testimonial-container {
+      position: relative;
+      min-height: 200px;
+    }
+
+    .testimonial {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .testimonial.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .testimonial-content {
+      background: rgba(99, 102, 241, 0.05);
+      border-left: 4px solid var(--primary);
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .author-info {
+      flex: 1;
+    }
+
+    .author-name {
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .author-role {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      width: 24px;
+      border-radius: 4px;
+    }
+
     /* Seção */
     section {
       background: var(--surface);
@@ -119,6 +237,7 @@
     section:nth-child(3) { animation-delay: 0.3s; }
     section:nth-child(4) { animation-delay: 0.4s; }
     section:nth-child(5) { animation-delay: 0.5s; }
+    section:nth-child(6) { animation-delay: 0.6s; }
 
     h2 {
       font-size: 1.5rem;
@@ -403,6 +522,14 @@
         width: 56px;
         height: 56px;
       }
+
+      .testimonial-content {
+        padding: 20px;
+      }
+
+      .testimonial-text {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -410,7 +537,7 @@
 
   <header>
     <div class="logo-container">
-      <img id="logo" src="" alt="Logo KDEFY">
+      <div id="logo">K</div>
     </div>
     <h1>Política de Reembolso</h1>
     <p class="subtitle">Informações válidas para todos os clientes e produtos da KDEFY</p>
@@ -418,6 +545,17 @@
 
   <div class="container">
     <main>
+      <!-- Seção de Comentários -->
+      <div class="testimonials-section">
+        <h2>O que nossos clientes dizem</h2>
+        <div class="testimonial-container" id="testimonialContainer">
+          <!-- Comentários serão inseridos aqui via JavaScript -->
+        </div>
+        <div class="testimonial-dots" id="testimonialDots">
+          <!-- Dots serão inseridos aqui via JavaScript -->
+        </div>
+      </div>
+
       <section>
         <h2>Escopo</h2>
         <p>Esta política se aplica a todas as vendas de <strong>bots</strong>, <strong>sites</strong>, <strong>números</strong> e outros serviços prestados pela KDEFY.</p>
@@ -509,13 +647,131 @@
   </button>
 
   <script>
-    // Logo e favicon
-    const logoURL = "https://cdn-icons-png.flaticon.com/512/5977/5977585.png";
-    const favicon = document.createElement("link");
-    favicon.rel = "icon";
-    favicon.href = logoURL;
-    document.head.appendChild(favicon);
-    document.getElementById("logo").src = logoURL;
+    // Criar favicon com letra K roxa
+    function criarFavicon() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 64;
+      canvas.height = 64;
+      const ctx = canvas.getContext('2d');
+      
+      // Fundo transparente
+      ctx.clearRect(0, 0, 64, 64);
+      
+      // Desenhar K roxo
+      ctx.fillStyle = '#6366f1';
+      ctx.font = 'bold 48px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('K', 32, 32);
+      
+      // Converter para favicon
+      const favicon = document.createElement('link');
+      favicon.rel = 'icon';
+      favicon.href = canvas.toDataURL('image/png');
+      document.head.appendChild(favicon);
+    }
+
+    // Comentários de clientes
+    const testimonials = [
+      {
+        text: "Excelente atendimento! Consegui resolver meu problema rapidamente e o suporte foi muito atencioso. Recomendo!",
+        author: "Carlos Silva",
+        role: "Cliente desde 2025",
+        initial: "C"
+      },
+      {
+        text: "Os bots da KDEFY são incríveis! Aumentaram muito a produtividade da minha empresa. Estou muito satisfeito com o resultado.",
+        author: "Maria Santos",
+        role: "Empresária",
+        initial: "M"
+      },
+      {
+        text: "Profissionais muito competentes. O site que desenvolveram para mim superou todas as expectativas. Muito obrigado!",
+        author: "João Oliveira",
+        role: "Empreendedor",
+        initial: "J"
+      },
+      {
+        text: "Suporte rápido e eficiente. Tive um problema e em minutos já estava resolvido. Parabéns pela qualidade do serviço!",
+        author: "Ana Paula",
+        role: "Cliente Premium",
+        initial: "A"
+      },
+      {
+        text: "Melhor investimento que fiz para o meu negócio. A automação dos processos me economizou horas de trabalho diário!",
+        author: "Pedro Costa",
+        role: "Gestor de TI",
+        initial: "P"
+      },
+      {
+        text: "Equipe muito profissional e preço justo. Já indiquei para vários amigos e todos ficaram satisfeitos com os serviços.",
+        author: "Juliana Lima",
+        role: "Desenvolvedora",
+        initial: "J"
+      }
+    ];
+
+    let currentTestimonial = 0;
+
+    // Inicializar comentários
+    function inicializarComentarios() {
+      const container = document.getElementById('testimonialContainer');
+      const dotsContainer = document.getElementById('testimonialDots');
+
+      testimonials.forEach((testimonial, index) => {
+        // Criar elemento de comentário
+        const div = document.createElement('div');
+        div.className = `testimonial ${index === 0 ? 'active' : ''}`;
+        div.innerHTML = `
+          <div class="testimonial-content">
+            <div class="testimonial-text">"${testimonial.text}"</div>
+            <div class="testimonial-author">
+              <div class="author-avatar">${testimonial.initial}</div>
+              <div class="author-info">
+                <div class="author-name">${testimonial.author}</div>
+                <div class="author-role">${testimonial.role}</div>
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
+
+        // Criar dot
+        const dot = document.createElement('div');
+        dot.className = `dot ${index === 0 ? 'active' : ''}`;
+        dot.onclick = () => mudarComentario(index);
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    // Mudar comentário
+    function mudarComentario(index) {
+      const allTestimonials = document.querySelectorAll('.testimonial');
+      const allDots = document.querySelectorAll('.dot');
+
+      allTestimonials[currentTestimonial].classList.remove('active');
+      allDots[currentTestimonial].classList.remove('active');
+
+      currentTestimonial = index;
+
+      allTestimonials[currentTestimonial].classList.add('active');
+      allDots[currentTestimonial].classList.add('active');
+    }
+
+    // Auto rotação de comentários
+    function autoRotacionarComentarios() {
+      setInterval(() => {
+        const nextIndex = (currentTestimonial + 1) % testimonials.length;
+        mudarComentario(nextIndex);
+      }, 5000); // Muda a cada 5 segundos
+    }
+
+    // Inicializar tudo ao carregar a página
+    window.onload = function() {
+      criarFavicon();
+      inicializarComentarios();
+      autoRotacionarComentarios();
+    };
 
     // Alterna caixa de suporte
     function toggleSupport() {
