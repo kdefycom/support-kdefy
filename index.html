@@ -1,213 +1,254 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kdefy — Termos & Reembolso</title>
-<style>
-:root{
-  --bg:#0b0b0b;--panel:#0f0f0f;--muted:#bdbdbd;--text:#ffffff;--accent:#ffffff;--success:#00ff6a;
-}
-html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text)}
-a{color:inherit;text-decoration:none}
-.wrap{display:flex;min-height:100vh;overflow:hidden}
-.sidebar{
-  width:280px;background:var(--panel);border-right:1px solid #181818;box-sizing:border-box;padding:28px 22px;position:fixed;left:0;top:0;bottom:0;display:flex;flex-direction:column;gap:22px
-}
-.brand{display:flex;align-items:center;gap:12px}
-.brand .logo-canvas{width:56px;height:56px;border-radius:8px;background:#000;flex:0 0 56px}
-.brand h1{font-size:18px;margin:0;font-weight:700;letter-spacing:0.6px;color:var(--accent);}
-nav{display:flex;flex-direction:column;gap:10px;margin-top:6px}
-nav a{padding:10px 12px;border-radius:8px;color:var(--muted);font-weight:600;transition:all .12s}
-nav a:hover{color:var(--accent);background:#0a0a0a}
-.small{font-size:12px;color:var(--muted);margin-top:auto}
-.content{margin-left:320px;flex:1;padding:36px 48px 80px 48px;overflow:auto;height:100vh;box-sizing:border-box}
-header h2{margin:0;font-size:28px;color:var(--accent);letter-spacing:0.2px}
-section{margin-bottom:36px}
-h3{margin:0 0 10px 0;color:#fff}
-p,ul{color:var(--muted);line-height:1.6}
-ul{padding-left:18px}
-.highlight{background:#111;padding:14px;border-left:4px solid #222;margin:12px 0;border-radius:6px}
-.rule{font-weight:700;color:#fff;margin-top:8px}
-footer{position:fixed;right:20px;bottom:18px;background:#0c0c0c;padding:12px 14px;border-radius:8px;border:1px solid #1a1a1a;color:var(--muted);font-size:13px}
-html{scroll-behavior:smooth}
-form{display:flex;flex-direction:column;gap:10px;background:#111;padding:18px;border-radius:8px;max-width:480px;position:relative;}
-label{font-weight:600;color:#fff}
-input,textarea,select{background:#0d0d0d;border:1px solid #222;color:#fff;padding:10px;border-radius:6px;width:100%;box-sizing:border-box;font-family:Inter,Arial,sans-serif;}
-button{background:var(--accent);color:#000;font-weight:700;border:none;border-radius:6px;padding:12px;cursor:pointer;transition:.2s}
-button:hover{background:#ddd}
-#fileLabel{display:inline-block;background:#222;padding:10px;border-radius:6px;cursor:pointer;text-align:center;}
-#file{display:none;}
-.preview img{max-width:100%;margin-top:10px;border-radius:6px;border:1px solid #222}
-.success-box{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);flex-direction:column;align-items:center;justify-content:center;padding:20px;border:2px solid var(--success);border-radius:12px;background:#0d0d0d;color:var(--success);z-index:1000;max-width:400px;text-align:center;box-shadow:0 0 20px var(--success);}
-.success-box h3{margin:0 0 10px 0;color:var(--success);}
-.success-box p{color:var(--muted);}
-#langMenu{display:none;position:absolute;top:40px;right:10px;background:#222;border-radius:8px;overflow:hidden;flex-direction:column;min-width:120px;z-index:1001;}
-#langMenu button{padding:10px;border:none;background:#222;color:#fff;text-align:left;cursor:pointer;width:100%;transition:.2s}
-#langMenu button:hover{background:#333}
-.flag-btn{position:absolute;top:10px;right:10px;padding:10px;border-radius:50%;border:none;cursor:pointer;background:#222;color:#fff;font-weight:600;transition:.2s;font-size:18px}
-.flag-btn:hover{background:#333}
-@media (max-width:900px){
-  .sidebar{position:static;width:100%;height:auto;padding:18px;display:flex;flex-direction:row;gap:12px;align-items:center}
-  .content{margin-left:0;padding:20px}
-  .wrap{flex-direction:column}
-  nav{flex-direction:row;gap:8px;overflow:auto}
-  nav a{white-space:nowrap}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Reembolso - KDEFY</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      padding: 30px 15px 100px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header img {
+      width: 90px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 25px;
+      font-size: 1.3rem;
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: 10px;
+      color: #ddd;
+    }
+
+    .highlight {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-left: 3px solid #fff;
+      margin-top: 15px;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+    }
+
+    /* Botão WhatsApp */
+    #whatsappBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    /* Caixa de suporte */
+    #supportBox {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 15px;
+      width: 270px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      z-index: 999;
+    }
+
+    #supportBox h3 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    #supportBox input, 
+    #supportBox select, 
+    #supportBox textarea {
+      width: 100%;
+      background: #000;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 6px;
+      margin-top: 6px;
+      font-size: 0.9rem;
+    }
+
+    #supportBox textarea {
+      height: 60px;
+      resize: none;
+    }
+
+    #supportBox button {
+      width: 48%;
+      margin-top: 10px;
+      padding: 6px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .send-whatsapp {
+      background: #25d366;
+      color: #000;
+    }
+
+    .send-email {
+      background: #555;
+      color: #fff;
+      float: right;
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <aside class="sidebar">
-    <div class="brand">
-      <canvas class="logo-canvas" id="logoCanvas" width="128" height="128"></canvas>
-      <div>
-        <h1>Kdefy</h1>
-      </div>
-    </div>
-    <nav>
-      <a href="#resumo" data-translate="Resumo">Resumo</a>
-      <a href="#reembolso" data-translate="Política de Reembolso">Política de Reembolso</a>
-      <a href="#privacidade" data-translate="Privacidade">Privacidade</a>
-      <a href="#termos" data-translate="Termos">Termos</a>
-      <a href="#contato" data-translate="Contato">Contato</a>
-    </nav>
-    <div class="small" id="supportInfo">kdefycom@gmail.com<br>Última atualização: <span id="lastUpdateSmall"></span></div>
-  </aside>
 
-  <main class="content">
-    <button class="flag-btn" id="langBtn">🌐</button>
-    <div id="langMenu">
-      <button data-lang="pt">Português</button>
-      <button data-lang="en">English</button>
-    </div>
-    <header id="resumo">
-      <h2 data-translate="Kdefy — Políticas para clientes">Kdefy — Políticas para clientes</h2>
-    </header>
+  <header>
+    <img id="logo" src="" alt="Logo">
+    <h1>Política de Reembolso</h1>
+    <p>Informações válidas para todos os clientes e produtos da KDEFY</p>
+  </header>
 
-    <section id="reembolso">
-      <h3 data-translate="Política de Reembolso">Política de Reembolso</h3>
+  <main>
+    <section>
+      <h2>1. Escopo</h2>
+      <p>Esta política se aplica a todas as vendas de <strong>bots</strong>, <strong>sites</strong>, <strong>números</strong> e outros serviços prestados.</p>
+    </section>
+
+    <section>
+      <h2>2. Prazos de Reembolso</h2>
       <div class="highlight">
-        <div class="rule" data-translate="Regra principal:">Regra principal:</div>
-        <p data-translate="Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.">Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.</p>
+        <p>Todas as vendas possuem <strong>política de reembolso de 7 a 30 dias</strong>, exceto no caso de <strong>números</strong>, que <strong>não possuem direito a reembolso</strong>.</p>
       </div>
-      <ul>
-        <li data-translate="Pedidos fora do prazo são recusados.">Pedidos fora do prazo são recusados.</li>
-        <li data-translate="Vendas com desconto podem não ter reembolso.">Vendas com desconto podem não ter reembolso.</li>
-        <li data-translate="Alterações ou mau uso anulam o direito.">Alterações ou mau uso anulam o direito.</li>
-      </ul>
     </section>
 
-    <section id="privacidade">
-      <h3 data-translate="Política de Privacidade">Política de Privacidade</h3>
-      <p data-translate="Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.">Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.</p>
+    <section>
+      <h2>3. Condições Gerais</h2>
+      <p>Pedidos de reembolso serão analisados individualmente e devem ser solicitados dentro do prazo estabelecido. Após esse período, a compra será considerada definitiva.</p>
     </section>
 
-    <section id="termos">
-      <h3 data-translate="Termos de Uso">Termos de Uso</h3>
-      <ul>
-        <li data-translate="Uso permitido apenas em conformidade com leis e regras das plataformas.">Uso permitido apenas em conformidade com leis e regras das plataformas.</li>
-        <li data-translate="Proibida revenda sem autorização.">Proibida revenda sem autorização.</li>
-        <li data-translate="Suporte e atualizações podem ter custo adicional.">Suporte e atualizações podem ter custo adicional.</li>
-      </ul>
+    <section>
+      <h2>4. Promoções e Fidelidade</h2>
+      <p>Produtos adquiridos com desconto ou promoções especiais podem ter restrições adicionais quanto a reembolsos.</p>
     </section>
 
-    <section id="contato">
-      <h3 data-translate="Solicitar Reembolso / Contato">Solicitar Reembolso / Contato</h3>
-      <form id="contactForm" enctype="multipart/form-data">
-        <label for="type">Tipo de Solicitação</label>
-        <select id="type" name="type">
-          <option value="reembolso" data-translate="Reembolso">Reembolso</option>
-          <option value="outro" data-translate="Outro">Outro</option>
-        </select>
-        <label for="name" data-translate="Nome">Nome</label>
-        <input type="text" id="name" name="name" placeholder="Seu nome" required>
-        <label for="email" data-translate="E-mail">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
-        <label for="phone" data-translate="Número">Número</label>
-        <input type="text" id="phone" name="phone" placeholder="Seu número (opcional)">
-        <label for="message" data-translate="Mensagem">Mensagem</label>
-        <textarea id="message" name="message" rows="4" placeholder="Digite sua mensagem..." required></textarea>
-        <label id="fileLabel" for="file" data-translate="Anexar imagem (opcional)">Selecionar imagem</label>
-        <input type="file" id="file" name="file" accept="image/*">
-        <div class="preview" id="preview"></div>
-        <button type="submit" data-translate="Enviar">Enviar</button>
-      </form>
-      <div class="success-box" id="successBox">
-        <canvas id="successLogo" width="80" height="80"></canvas>
-        <h3 data-translate="Mensagem enviada com sucesso!">Mensagem enviada com sucesso!</h3>
-        <p data-translate="Seu pedido foi recebido e será analisado.">Seu pedido foi recebido e será analisado. Para mais informações acesse <a href="https://support.kdefy.com/terms-privacy" target="_blank">support.kdefy.com/terms-privacy</a></p>
-      </div>
+    <section>
+      <h2>5. Suporte</h2>
+      <p>Para dúvidas ou solicitações, acesse <a href="https://support.kdefy.com" target="_blank" style="color:#fff; text-decoration:underline;">support.kdefy.com</a>.</p>
     </section>
   </main>
-</div>
 
-<footer id="footer"><div id="lastUpdate"></div></footer>
+  <footer>
+    <p>© 2025 KDEFY. Todos os direitos reservados.</p>
+  </footer>
 
-<script>
-const c=document.getElementById('logoCanvas'),ctx=c.getContext('2d');
-ctx.fillStyle='#000';ctx.fillRect(0,0,c.width,c.height);
-ctx.fillStyle='#fff';ctx.fillRect(18,18,c.width-36,c.height-36);
-ctx.fillStyle='#000';ctx.fillRect(28,26,14,c.height-52);
-ctx.beginPath();ctx.moveTo(c.width/2+6,28);ctx.lineTo(c.width-28,c.height/2);ctx.lineTo(c.width/2+6,c.height-28);ctx.closePath();ctx.fill();
-const f=document.createElement('canvas');f.width=64;f.height=64;const fx=f.getContext('2d');
-fx.fillStyle='#000';fx.fillRect(0,0,64,64);
-fx.drawImage(c,0,0,64,64);
-const link=document.createElement('link');link.rel='icon';link.href=f.toDataURL('image/png');document.head.appendChild(link);
+  <!-- Caixa de suporte -->
+  <div id="supportBox">
+    <h3>Suporte</h3>
+    <input type="email" id="email" placeholder="Seu e-mail">
+    <input type="text" id="numero" placeholder="Seu número (opcional)">
+    <select id="tipo">
+      <option value="Reembolso">Reembolso</option>
+      <option value="Outros">Outros</option>
+      <option value="Feedback">Feedback</option>
+    </select>
+    <textarea id="mensagem" placeholder="Mensagem desejada..."></textarea>
+    <div style="display:flex; justify-content:space-between;">
+      <button class="send-whatsapp" onclick="enviarWhatsApp()">WhatsApp</button>
+      <button class="send-email" onclick="enviarEmail()">Email</button>
+    </div>
+  </div>
 
-const d=new Date();const formatted=d.toLocaleDateString('pt-BR',{year:'numeric',month:'long',day:'2-digit'});
-document.getElementById('lastUpdate').textContent='Última atualização: '+formatted;
-document.getElementById('lastUpdateSmall').textContent=formatted;
+  <!-- Botão flutuante -->
+  <button id="whatsappBtn" onclick="toggleSupport()">💬</button>
 
-document.getElementById('file').addEventListener('change',e=>{
-  const file=e.target.files[0];const prev=document.getElementById('preview');prev.innerHTML='';
-  if(file){const img=document.createElement('img');img.src=URL.createObjectURL(file);prev.appendChild(img);}
-});
+  <script>
+    // Logo e favicon
+    const logoURL = "https://cdn-icons-png.flaticon.com/512/5977/5977585.png";
+    const favicon = document.createElement("link");
+    favicon.rel = "icon";
+    favicon.href = logoURL;
+    document.head.appendChild(favicon);
+    document.getElementById("logo").src = logoURL;
 
-document.getElementById('contactForm').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const form=document.getElementById('contactForm');
-  const formData=new FormData(form);
-  try{
-    const res=await fetch('http://localhost:3000/send',{method:'POST',body:formData});
-    if(res.ok){
-      const box=document.getElementById('successBox');
-      box.style.display='flex';
-      setTimeout(()=>{box.style.display='none'},5000);
-      form.reset();
-      document.getElementById('preview').innerHTML='';
-      const sl=document.getElementById('successLogo'),sctx=sl.getContext('2d');
-      sctx.clearRect(0,0,80,80);
-      sctx.fillStyle='#000';sctx.fillRect(0,0,80,80);
-      sctx.fillStyle='#00ff6a';sctx.font='bold 28px Arial';
-      sctx.fillText('K',20,50);
-    }else alert('Erro ao enviar. Tente novamente.');
-  }catch(err){alert('Erro ao conectar com o servidor.');console.error(err);}
-});
+    // Alterna caixa de suporte
+    function toggleSupport() {
+      const box = document.getElementById("supportBox");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    }
 
-const langBtn=document.getElementById('langBtn'),langMenu=document.getElementById('langMenu');
-langBtn.addEventListener('click',()=>{langMenu.style.display=langMenu.style.display==='flex'?'none':'flex'});
-document.querySelectorAll('#langMenu button').forEach(b=>{b.addEventListener('click',()=>{currentLang=b.dataset.lang;updateLang();langMenu.style.display='none'})});
+    // Envia mensagem para WhatsApp
+    function enviarWhatsApp() {
+      const email = document.getElementById("email").value;
+      const numero = document.getElementById("numero").value;
+      const tipo = document.getElementById("tipo").value;
+      const mensagem = document.getElementById("mensagem").value;
 
-const translations={
-en:{
-"Resumo":"Summary","Política de Reembolso":"Refund Policy","Privacidade":"Privacy","Termos":"Terms","Contato":"Contact",
-"Kdefy — Políticas para clientes":"Kdefy — Customer Policies",
-"Regra principal:":"Main Rule:","Reembolsos só dentro de 30 dias corridos e apenas em caso de falha técnica comprovada.":"Refunds only within 30 days and only in case of verified technical issues.",
-"Pedidos fora do prazo são recusados.":"Requests beyond deadline are denied.","Vendas com desconto podem não ter reembolso.":"Discounted sales may not be refunded.",
-"Alterações ou mau uso anulam o direito.":"Changes or misuse void the right.","Política de Privacidade":"Privacy Policy",
-"Coletamos apenas dados essenciais (nome, e-mail, número e comprovante de pagamento). Não há compartilhamento com terceiros, salvo exigência legal.":"We collect only essential data (name, email, phone, payment proof). No third-party sharing except legal requirements.",
-"Termos de Uso":"Terms of Use","Uso permitido apenas em conformidade com leis e regras das plataformas.":"Use only in compliance with laws and platform rules.",
-"Proibida revenda sem autorização.":"Resale without permission is prohibited.","Suporte e atualizações podem ter custo adicional.":"Support and updates may have additional cost.",
-"Solicitar Reembolso / Contato":"Request Refund / Contact","Reembolso":"Refund","Outro":"Other",
-"Nome":"Name","E-mail":"Email","Número":"Phone","Mensagem":"Message","Anexar imagem (opcional)":"Attach image (optional)","Enviar":"Send",
-"Mensagem enviada com sucesso!":"Message sent successfully!","Seu pedido foi recebido e será analisado.":"Your request has been received and will be analyzed. For more info visit support.kdefy.com/terms-privacy"
-};
-let currentLang='pt';
-function updateLang(){document.querySelectorAll('[data-translate]').forEach(el=>{
-if(currentLang==='en'&&translations.en[el.getAttribute('data-translate')]) el.textContent=translations.en[el.getAttribute('data-translate')];
-if(currentLang==='pt'&&el.getAttribute('data-translate')) el.textContent=el.getAttribute('data-translate');
-})}
-</script>
+      const texto = encodeURIComponent(`📩 *Solicitação via Suporte KDEFY*  
+✉️ E-mail: ${email}  
+📞 Número: ${numero || "não informado"}  
+📂 Tipo: ${tipo}  
+💬 Mensagem: ${mensagem}`);
+
+      window.open(`https://wa.me/553497637882?text=${texto}`, "_blank");
+    }
+
+    // Envia mensagem por e-mail
+    function enviarEmail() {
+      const email = document.getElementById("email").value;
+      const numero = document.getElementById("numero").value;
+      const tipo = document.getElementById("tipo").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const assunto = encodeURIComponent(`Suporte KDEFY - ${tipo}`);
+      const corpo = encodeURIComponent(`E-mail: ${email}\nNúmero: ${numero}\nTipo: ${tipo}\n\nMensagem:\n${mensagem}`);
+
+      window.location.href = `mailto:kdefycom@gmail.com?subject=${assunto}&body=${corpo}`;
+    }
+  </script>
+
 </body>
 </html>
