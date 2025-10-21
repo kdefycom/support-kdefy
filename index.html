@@ -4,206 +4,509 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Reembolso - KDEFY</title>
-
+  <meta name="description" content="Política de Reembolso da KDEFY - Informações sobre prazos e condições de reembolso">
+  
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --success: #10b981;
+      --background: #0a0a0f;
+      --surface: #1a1a24;
+      --border: #2a2a3a;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --whatsapp: #25d366;
     }
 
     body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       line-height: 1.6;
-      padding: 30px 15px 100px;
+      min-height: 100vh;
+      scroll-behavior: smooth;
     }
 
+    /* Header */
     header {
       text-align: center;
-      margin-bottom: 30px;
+      padding: 60px 20px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+      animation: fadeInDown 0.8s ease-out;
     }
 
     header img {
-      width: 90px;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      border: 2px solid var(--primary);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05) rotate(5deg);
     }
 
     h1 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
     }
 
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 120px;
+    }
+
+    /* Seção */
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.6s ease-out both;
+    }
+
+    section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+    section:nth-child(5) { animation-delay: 0.5s; }
+
     h2 {
-      margin-top: 25px;
-      font-size: 1.3rem;
-      text-decoration: underline;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+      border-radius: 2px;
     }
 
     p {
-      margin-top: 10px;
-      color: #ddd;
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 1rem;
     }
 
     .highlight {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px;
-      border-left: 3px solid #fff;
-      margin-top: 15px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%);
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 16px;
     }
 
+    .highlight p {
+      color: var(--text);
+      margin: 0;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Footer */
     footer {
-      margin-top: 40px;
       text-align: center;
+      padding: 32px 20px;
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
       font-size: 0.9rem;
-      opacity: 0.7;
-      border-top: 1px solid #333;
-      padding-top: 10px;
     }
 
     /* Botão WhatsApp */
     #whatsappBtn {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: #25d366;
+      bottom: 30px;
+      right: 30px;
+      background: var(--whatsapp);
       color: #fff;
       border: none;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
+      width: 64px;
+      height: 64px;
+      font-size: 32px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
       z-index: 1000;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    #whatsappBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+    }
+
+    #whatsappBtn svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
     }
 
     /* Caixa de suporte */
     #supportBox {
       display: none;
       position: fixed;
-      bottom: 100px;
-      right: 25px;
-      background: #111;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 15px;
-      width: 270px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      bottom: 110px;
+      right: 30px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      width: 320px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
       z-index: 999;
+      animation: slideInUp 0.3s ease-out;
+    }
+
+    #supportBox.show {
+      display: block;
     }
 
     #supportBox h3 {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      color: #fff;
     }
 
-    #supportBox input, 
-    #supportBox select, 
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    #supportBox input,
+    #supportBox select,
     #supportBox textarea {
       width: 100%;
-      background: #000;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 5px;
-      padding: 6px;
-      margin-top: 6px;
-      font-size: 0.9rem;
+      background: var(--background);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    #supportBox input:focus,
+    #supportBox select:focus,
+    #supportBox textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
     }
 
     #supportBox textarea {
-      height: 60px;
-      resize: none;
+      height: 80px;
+      resize: vertical;
     }
 
-    #supportBox button {
-      width: 48%;
-      margin-top: 10px;
-      padding: 6px;
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px 20px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .send-whatsapp {
-      background: #25d366;
-      color: #000;
-    }
-
-    .send-email {
-      background: #555;
+    .btn-whatsapp {
+      background: var(--whatsapp);
       color: #fff;
-      float: right;
+    }
+
+    .btn-whatsapp:hover {
+      background: #20bd5a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-email {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-email:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .error {
+      color: #ef4444;
+      font-size: 0.85rem;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error.show {
+      display: block;
+    }
+
+    /* Animações */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      }
+      50% {
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.6);
+      }
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 24px;
+      }
+
+      #supportBox {
+        right: 20px;
+        left: 20px;
+        width: auto;
+        bottom: 100px;
+      }
+
+      #whatsappBtn {
+        right: 20px;
+        bottom: 20px;
+        width: 56px;
+        height: 56px;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img id="logo" src="" alt="Logo">
+    <div class="logo-container">
+      <img id="logo" src="" alt="Logo KDEFY">
+    </div>
     <h1>Política de Reembolso</h1>
-    <p>Informações válidas para todos os clientes e produtos da KDEFY</p>
+    <p class="subtitle">Informações válidas para todos os clientes e produtos da KDEFY</p>
   </header>
 
-  <main>
-    <section>
-      <h2>1. Escopo</h2>
-      <p>Esta política se aplica a todas as vendas de <strong>bots</strong>, <strong>sites</strong>, <strong>números</strong> e outros serviços prestados.</p>
-    </section>
+  <div class="container">
+    <main>
+      <section>
+        <h2>Escopo</h2>
+        <p>Esta política se aplica a todas as vendas de <strong>bots</strong>, <strong>sites</strong>, <strong>números</strong> e outros serviços prestados pela KDEFY.</p>
+      </section>
 
-    <section>
-      <h2>2. Prazos de Reembolso</h2>
-      <div class="highlight">
-        <p>Todas as vendas possuem <strong>política de reembolso de 7 a 30 dias</strong>, exceto no caso de <strong>números</strong>, que <strong>não possuem direito a reembolso</strong>.</p>
-      </div>
-    </section>
+      <section>
+        <h2>Prazos de Reembolso</h2>
+        <div class="highlight">
+          <p>Todas as vendas possuem <strong>política de reembolso de 7 a 30 dias</strong>, exceto no caso de <strong>números</strong>, que <strong>não possuem direito a reembolso</strong>.</p>
+        </div>
+      </section>
 
-    <section>
-      <h2>3. Condições Gerais</h2>
-      <p>Pedidos de reembolso serão analisados individualmente e devem ser solicitados dentro do prazo estabelecido. Após esse período, a compra será considerada definitiva.</p>
-    </section>
+      <section>
+        <h2>Condições Gerais</h2>
+        <p>Pedidos de reembolso serão analisados individualmente e devem ser solicitados dentro do prazo estabelecido. Após esse período, a compra será considerada definitiva.</p>
+      </section>
 
-    <section>
-      <h2>4. Promoções e Fidelidade</h2>
-      <p>Produtos adquiridos com desconto ou promoções especiais podem ter restrições adicionais quanto a reembolsos.</p>
-    </section>
+      <section>
+        <h2>Promoções e Fidelidade</h2>
+        <p>Produtos adquiridos com desconto ou promoções especiais podem ter restrições adicionais quanto a reembolsos. Consulte os termos específicos da promoção.</p>
+      </section>
 
-    <section>
-      <h2>5. Suporte</h2>
-      <p>Para dúvidas ou solicitações, acesse <a href="https://support.kdefy.com" target="_blank" style="color:#fff; text-decoration:underline;">support.kdefy.com</a>.</p>
-    </section>
-  </main>
+      <section>
+        <h2>Suporte</h2>
+        <p>Para dúvidas ou solicitações, acesse <a href="https://support.kdefy.com" target="_blank">support.kdefy.com</a> ou utilize o botão de suporte flutuante no canto inferior direito.</p>
+      </section>
+    </main>
 
-  <footer>
-    <p>© 2025 KDEFY. Todos os direitos reservados.</p>
-  </footer>
+    <footer>
+      <p>© 2025 KDEFY. Todos os direitos reservados.</p>
+    </footer>
+  </div>
 
   <!-- Caixa de suporte -->
   <div id="supportBox">
-    <h3>Suporte</h3>
-    <input type="email" id="email" placeholder="Seu e-mail">
-    <input type="text" id="numero" placeholder="Seu número (opcional)">
-    <select id="tipo">
-      <option value="Reembolso">Reembolso</option>
-      <option value="Outros">Outros</option>
-      <option value="Feedback">Feedback</option>
-    </select>
-    <textarea id="mensagem" placeholder="Mensagem desejada..."></textarea>
-    <div style="display:flex; justify-content:space-between;">
-      <button class="send-whatsapp" onclick="enviarWhatsApp()">WhatsApp</button>
-      <button class="send-email" onclick="enviarEmail()">Email</button>
-    </div>
+    <h3>Fale Conosco</h3>
+    <form id="supportForm">
+      <div class="form-group">
+        <label for="email">E-mail *</label>
+        <input type="email" id="email" placeholder="seu@email.com" required>
+        <span class="error" id="emailError">Por favor, insira um e-mail válido</span>
+      </div>
+
+      <div class="form-group">
+        <label for="numero">Número (opcional)</label>
+        <input type="tel" id="numero" placeholder="+55 (34) 9999-9999">
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Assunto *</label>
+        <select id="tipo" required>
+          <option value="Reembolso">Reembolso</option>
+          <option value="Suporte Técnico">Suporte Técnico</option>
+          <option value="Dúvidas">Dúvidas</option>
+          <option value="Feedback">Feedback</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mensagem">Mensagem *</label>
+        <textarea id="mensagem" placeholder="Descreva sua solicitação..." required></textarea>
+        <span class="error" id="mensagemError">Por favor, insira uma mensagem</span>
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="btn btn-whatsapp" onclick="enviarWhatsApp()">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          WhatsApp
+        </button>
+        <button type="button" class="btn btn-email" onclick="enviarEmail()">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          E-mail
+        </button>
+      </div>
+    </form>
   </div>
 
   <!-- Botão flutuante -->
-  <button id="whatsappBtn" onclick="toggleSupport()">💬</button>
+  <button id="whatsappBtn" onclick="toggleSupport()" aria-label="Abrir suporte">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.42 0-2.77-.36-3.95-1l-.29-.19-2.97.5.5-2.97-.19-.29C4.36 14.77 4 13.42 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+      <path d="M8.5 7.5h7v1h-7zm0 2h7v1h-7zm0 2h5v1h-5z"/>
+    </svg>
+  </button>
 
   <script>
     // Logo e favicon
@@ -217,37 +520,102 @@
     // Alterna caixa de suporte
     function toggleSupport() {
       const box = document.getElementById("supportBox");
-      box.style.display = box.style.display === "block" ? "none" : "block";
+      box.classList.toggle("show");
+    }
+
+    // Validação de e-mail
+    function validarEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    // Validação do formulário
+    function validarFormulario() {
+      const email = document.getElementById("email").value.trim();
+      const mensagem = document.getElementById("mensagem").value.trim();
+      let valido = true;
+
+      // Validar e-mail
+      const emailError = document.getElementById("emailError");
+      if (!email || !validarEmail(email)) {
+        emailError.classList.add("show");
+        valido = false;
+      } else {
+        emailError.classList.remove("show");
+      }
+
+      // Validar mensagem
+      const mensagemError = document.getElementById("mensagemError");
+      if (!mensagem) {
+        mensagemError.classList.add("show");
+        valido = false;
+      } else {
+        mensagemError.classList.remove("show");
+      }
+
+      return valido;
     }
 
     // Envia mensagem para WhatsApp
     function enviarWhatsApp() {
-      const email = document.getElementById("email").value;
-      const numero = document.getElementById("numero").value;
-      const tipo = document.getElementById("tipo").value;
-      const mensagem = document.getElementById("mensagem").value;
+      if (!validarFormulario()) {
+        return;
+      }
 
-      const texto = encodeURIComponent(`📩 *Solicitação via Suporte KDEFY*  
-✉️ E-mail: ${email}  
-📞 Número: ${numero || "não informado"}  
-📂 Tipo: ${tipo}  
-💬 Mensagem: ${mensagem}`);
+      const email = document.getElementById("email").value.trim();
+      const numero = document.getElementById("numero").value.trim();
+      const tipo = document.getElementById("tipo").value;
+      const mensagem = document.getElementById("mensagem").value.trim();
+
+      const texto = encodeURIComponent(
+`📩 *Solicitação via Suporte KDEFY*
+
+✉️ E-mail: ${email}
+📞 Número: ${numero || "não informado"}
+📂 Tipo: ${tipo}
+
+💬 Mensagem:
+${mensagem}`
+      );
 
       window.open(`https://wa.me/553497637882?text=${texto}`, "_blank");
     }
 
     // Envia mensagem por e-mail
     function enviarEmail() {
-      const email = document.getElementById("email").value;
-      const numero = document.getElementById("numero").value;
+      if (!validarFormulario()) {
+        return;
+      }
+
+      const email = document.getElementById("email").value.trim();
+      const numero = document.getElementById("numero").value.trim();
       const tipo = document.getElementById("tipo").value;
-      const mensagem = document.getElementById("mensagem").value;
+      const mensagem = document.getElementById("mensagem").value.trim();
 
       const assunto = encodeURIComponent(`Suporte KDEFY - ${tipo}`);
-      const corpo = encodeURIComponent(`E-mail: ${email}\nNúmero: ${numero}\nTipo: ${tipo}\n\nMensagem:\n${mensagem}`);
+      const corpo = encodeURIComponent(
+`E-mail: ${email}
+Número: ${numero || "não informado"}
+Tipo: ${tipo}
+
+Mensagem:
+${mensagem}`
+      );
 
       window.location.href = `mailto:kdefycom@gmail.com?subject=${assunto}&body=${corpo}`;
     }
+
+    // Fechar caixa de suporte ao clicar fora
+    document.addEventListener('click', function(event) {
+      const supportBox = document.getElementById('supportBox');
+      const whatsappBtn = document.getElementById('whatsappBtn');
+      
+      if (supportBox.classList.contains('show') && 
+          !supportBox.contains(event.target) && 
+          !whatsappBtn.contains(event.target)) {
+        supportBox.classList.remove('show');
+      }
+    });
   </script>
 
 </body>
